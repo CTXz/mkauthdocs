@@ -1,0 +1,4 @@
+build/
+dist/
+mkauthdocs.egg-info/
+files.txt
