@@ -39,7 +39,7 @@ We begin by building our documentation using mkdocs:
 mkdocs build
 ```
 
-By default, this will output the generated documentation to the `site/` directory, which will be passed to the tool as an argument (see `build_dir` in [Usage](#Usage)).
+By default, this will output the generated documentation to the `site/` directory, which will be passed to the tool as an argument (see `build_dir` in [Usage](#usage)).
 
 Now we proceed to add authentication support to the documentation using `mkauthdocs`. The login credentials will be configured the following way:
 
