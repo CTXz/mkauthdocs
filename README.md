@@ -3,6 +3,12 @@ Mkauthdocs is a tool specifically made to implement simple authentication around
 
 ![Screenshot](img/Screenshot.png)
 
+## Table of contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Functional overview](#functional-overview)
+- [License](#license)
+
 ## Installation
 
 Mkauthdocs can be directly installed from the [Python Package Index](https://pypi.python.org/pypi/pip)
