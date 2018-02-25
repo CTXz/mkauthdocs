@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 session_start();
 if ($_POST["uname"] == "{username}" && $_POST["pwd"] == "{password}") {
@@ -7,6 +5,8 @@ if ($_POST["uname"] == "{username}" && $_POST["pwd"] == "{password}") {
   header("Location: /" . $_GET["redirect"]);
 }
 ?>
+
+<!DOCTYPE html>
 
 <head>
   <meta charset="utf-8">
