@@ -25,8 +25,14 @@ import pkg_resources
 
 ## Generate PHP Session Guard ##
 def generate_session_guard(redirect):
+    calibration = ''
+    for directory in os.path.dirname(redirect).split('/'):
+        if directory:
+            calibration += '../'
+
     with open(pkg_resources.resource_filename('mkauthdocs', 'templates/session_guard_template.php'), 'r') as f:
         template = f.read()
+        template = template.replace('{calibration}', calibration)
         return template.replace('{redirect}', redirect)
 
 ## Generate Login Page

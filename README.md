@@ -69,11 +69,18 @@ The login page as well as the session guards are generated from templates which 
 
 **Example of a generated PHP guard for the index page:**
 ```php
-<!-- Authentication Guard -->
 <?php
 	session_start();
 	if (!$_SESSION['login']) {
-		header("Location: /login.php?redirect=index.php");
+		$dirname = $_SERVER['REQUEST_URI'];
+
+		if (substr($dirname, -1) != '/') {
+			$dirname=dirname($dirname).'/';
+		} else {
+			$dirname = preg_replace('~/+~', '/', $dirname);
+		}
+
+		header("Location: ".$dirname."login.php?redirect=footer.php");
 	}
 ?>
 ```

@@ -28,7 +28,7 @@ long_description = "Mkauthdocs is a tool specifically made to implement simple a
 
 setup(
     name='mkauthdocs',
-    version='0.1.1',
+    version='0.1.2',
     description='An authentication tool for mkdocs builds',
     long_description=long_description,
     url='https://github.com/ctxz/mkauthdocs',
