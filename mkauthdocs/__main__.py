@@ -21,16 +21,17 @@
 import os
 import glob
 import argparse
+import pkg_resources
 
 ## Generate PHP Session Guard ##
 def generate_session_guard(redirect):
-    with open('mkauthdocs/templates/session_guard_template.php', 'r') as f:
+    with open(pkg_resources.resource_filename('mkauthdocs', 'templates/session_guard_template.php'), 'r') as f:
         template = f.read()
         return template.replace('{redirect}', redirect)
 
 ## Generate Login Page
 def generate_login_page(heading, username, password):
-    with open('mkauthdocs/templates/login_template.php', 'r') as f:
+    with open(pkg_resources.resource_filename('mkauthdocs', 'templates/login_template.php'), 'r') as f:
         template = f.read()
         template = template.replace('{heading}', heading)
         template = template.replace('{username}', username)
