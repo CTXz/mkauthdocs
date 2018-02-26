@@ -78,10 +78,16 @@ def main():
 
                 with open(f_path, 'r+') as f:
                     f_content = f.read()
+
+                    # Replace all .html references with .php
+                    f_content = f_content.replace('.html', '.php')
+
+                    # Append session guard at the beginning of the file
                     f.seek(0, 0)
                     f.write(generate_session_guard(os.path.relpath(f_base, args.build_dir) + ".php") + f_content)
                     f.close()
 
+                # Change from .html extension to .php
                 os.rename(f_path, f_base + ".php") # Change extension from .html to .php
 
     # Generate Login Page
