@@ -35,7 +35,7 @@ def generate_session_guard(redirect):
         template = template.replace('{calibration}', calibration)
         return template.replace('{redirect}', redirect)
 
-## Generate Login Page
+## Generate Login Page ##
 def generate_login_page(heading, username, password):
     with open(pkg_resources.resource_filename('mkauthdocs', 'templates/login_template.php'), 'r') as f:
         template = f.read()
