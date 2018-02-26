@@ -1,14 +1,15 @@
 <?php
 session_start();
 
-if (isset($_POST['submit'])) {
-  print('<div class="alert alert-danger" role="alert"><center>The username or password is invalid</center></div>');
-}
-
 if ($_POST["uname"] == "{username}" && $_POST["pwd"] == "{password}") {
   $_SESSION['login'] = true;
   header("Location: ".$_GET["redirect"]);
 }
+
+if (isset($_POST['submit'])) {
+  print('<div class="alert alert-danger" role="alert"><center>The username or password is invalid</center></div>');
+}
+
 ?>
 
 <!DOCTYPE html>
