@@ -64,11 +64,6 @@ def main():
         print("mkauthdocs: '" + args.build_dir + "' No such file or directory")
         exit(-1);
 
-    # Check if build_dir is really a mkdocs build
-    if not os.path.exists(args.build_dir + "/mkdocs"):
-        print("mkauthdocs: '" + args.build_dir + "' does not appear to be a mkdocs build directory!")
-        exit(-1);
-
     # Append php session guard to the beginning of every file
     for root, dirs, files in os.walk(args.build_dir):
         for file in files:
