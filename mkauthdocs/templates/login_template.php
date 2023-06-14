@@ -1,7 +1,9 @@
 <?php
 session_start();
+$uname = $_POST["uname"] ?? '';
+$pwd = $_POST["pwd"] ?? '';
 
-if ($_POST["uname"] == "{username}" && $_POST["pwd"] == "{password}") {
+if ($uname == "{username}" && $pwd == "{password}") {
   $_SESSION['login'] = true;
   header("Location: ".$_GET["redirect"]);
 }
