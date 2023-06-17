@@ -31,6 +31,7 @@ optional arguments:
 ```
 
 > **Warning: The password is stored as plain text in the generated php code! Altough this code is only accessible to the server, it is still a risk you should be aware of!**
+
 > Note: This tool **only** applies on **mkdocs builds**, not previews served by `mkdocs serve`
 
 This section attempts to guide the reader trough a typical use case in oder to provide understanding in a context-based environment.
