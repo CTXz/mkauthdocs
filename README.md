@@ -4,10 +4,12 @@ Mkauthdocs is a tool specifically made to implement simple authentication around
 ![Screenshot](img/Screenshot.png)
 
 ## Table of contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Functional overview](#functional-overview)
-- [License](#license)
+- [Mkauthdocs](#mkauthdocs)
+	- [Table of contents](#table-of-contents)
+	- [Installation](#installation)
+	- [Usage](#usage)
+	- [Functional overview](#functional-overview)
+	- [License](#license)
 
 ## Installation
 
@@ -30,6 +32,7 @@ optional arguments:
   --heading HEADING  Heading on login page (default: 'Login')
 ```
 
+> **Warning: The password is stored as plain text in the generated php code! Altough this code is only accessible to the server, it is still a risk you should be aware of!**
 > Note: This tool **only** applies on **mkdocs builds**, not previews served by `mkdocs serve`
 
 This section attempts to guide the reader trough a typical use case in oder to provide understanding in a context-based environment.
@@ -70,24 +73,22 @@ The login page as well as the session guards are generated from templates which 
 **Example of a generated PHP guard for the index page:**
 ```php
 <?php
-	session_start();
-	if (!$_SESSION['login']) {
-		$dirname = $_SERVER['REQUEST_URI'];
+  session_start();
+  if (! isset($_SESSION['login']) || ! $_SESSION['login']) {
+    $dirname = $_SERVER['REQUEST_URI'] ?? '';
+    $dirname = preg_replace('/index.php$/', '', $dirname);
 
-		if (substr($dirname, -1) != '/') {
-			$dirname=dirname($dirname).'/';
-		} else {
-			$dirname = preg_replace('~/+~', '/', $dirname);
-		}
-
-		header("Location: ".$dirname."login.php?redirect=footer.php");
-	}
+    header("Location: ".$dirname."{calibration}login.php?redirect={redirect}");
+  }
 ?>
+
 ```
 
-Access to the site is only granted if the `login` session variable (`$_SESSION['login']`) set to true, otherwise the user is redirected to the login page where he or she is required authenticate himself or herself in order to set `$_SESSION['login']` to true and gain access to the docs.
+Access to the site is restricted based on the state of the `login` session variable (`$_SESSION['login']`). The user is only granted access if the variable is set to `true`. If the `login` variable is not set or is `false`, the user is redirected to the login page.
 
-If the provided credentials match to those set in the generated login page, then the user is redirected to the page he or she attempted to access. The page to which the user is redirected after a successful login, is defined by the `redirect` URL parameter set by the session guards.
+To gain access, the user must authenticate themselves on the login page. Upon successful authentication, the `$_SESSION['login']` variable is set to `true`, allowing the user to proceed to the documentation.
+
+If the provided credentials match those set in the generated login page, the user is redirected to the page they originally attempted to access. The destination page after successful login is determined by the `redirect` URL parameter, which is set by the session guards. This mechanism ensures a smooth transition to the desired page following successful authentication.
 
 ## License
 All files provided by this project fall under the OSS [MIT License](https://en.wikipedia.org/wiki/MIT_License)
