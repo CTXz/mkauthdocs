@@ -1,15 +1,13 @@
-# Mkauthdocs
+# Mkauthdocs <!-- omit in toc -->
 Mkauthdocs is a tool specifically made to implement simple authentication around [mkdocs](www.mkdocs.org) builds.
 
 ![Screenshot](img/Screenshot.png)
 
-## Table of contents
-- [Mkauthdocs](#mkauthdocs)
-	- [Table of contents](#table-of-contents)
-	- [Installation](#installation)
-	- [Usage](#usage)
-	- [Functional overview](#functional-overview)
-	- [License](#license)
+## Table of contents <!-- omit in toc -->
+- [Installation](#installation)
+- [Usage](#usage)
+- [Functional overview](#functional-overview)
+- [License](#license)
 
 ## Installation
 
